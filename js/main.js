@@ -1,4 +1,4 @@
-function getRandomIntInclusive(from, to){
+function getRandomInt(from, to){
   if (from < 0 || to < 0) {
     throw new RangeError ('Числа в диапазоне должны быть положительными');
   }
@@ -11,7 +11,7 @@ function getRandomIntInclusive(from, to){
     [from, to] = [to, from];
   }
 
-  if ( from === to) {
+  if (from === to) {
     return to;
   }
 
@@ -22,6 +22,6 @@ function getRandomIntInclusive(from, to){
 
 const isCorrectLength = (str, maxLength) => str.length <= maxLength;
 
-export {getRandomIntInclusive, isCorrectLength};
+export {getRandomInt, isCorrectLength};
 //ссылка на источник:https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
