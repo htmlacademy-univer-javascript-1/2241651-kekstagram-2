@@ -20,13 +20,7 @@ function getRandomIntInclusive(from, to){
   return Math.floor(Math.random() * (to - from + 1)) + from; //Максимум и минимум включаются
 }
 
-const isCorrectLength = (str, maxLength) => {
-  if (typeof str !== 'string') {
-    throw new RangeError('Значение str должно быть строкой');//взято из предыдущей пары в Teams
-  }
-
-  return str.length <= maxLength;
-};
+const isCorrectLength = (str, maxLength) => str.length <= maxLength;
 
 export {getRandomIntInclusive, isCorrectLength};
 //ссылка на источник:https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
