@@ -1,4 +1,4 @@
-import {getRandomInteger, createIdGenerator, getRandomArrayElement} from './util.js';
+import {getRandomInteger, createIdGenerator, getRandomArrayElement} from './mocks.js';
 
 const ID_COUNT = 25;
 const AVATAR_COUNT = 6;
@@ -54,4 +54,4 @@ const getPhotos = () =>
 
 getPhotos();
 
-export{getPhotos};
+export default getPhotos;

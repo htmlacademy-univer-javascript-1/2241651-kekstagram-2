@@ -1,16 +1,21 @@
+import {showBigPhoto} from './bigPhoto.js';
+
 const thumbnailTemplate = document
   .querySelector('#picture')
   .content.querySelector('.picture');
 const container = document.querySelector('.pictures');
 
 
-const createThumbnail = ({ comments, description, likes, url }) => {
+const createThumbnail = (picture) => {
+  const { description, url, likes, comments } = picture;
   const thumbnail = thumbnailTemplate.cloneNode(true);
 
   thumbnail.querySelector('.picture__img').src = url;
   thumbnail.querySelector('.picture__img').alt = description;
   thumbnail.querySelector('.picture__likes').textContent = likes;
   thumbnail.querySelector('.picture__comments').textContent = comments;
+
+  thumbnail.addEventListener('click', () => showBigPhoto(picture));
 
   return thumbnail;
 };
@@ -25,4 +30,4 @@ const renderThumbnails = (pictures) => {
   container.append(fragment);
 };
 
-export {renderThumbnails};
+export default renderThumbnails;
