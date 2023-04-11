@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomArrayElement} from './util.js';
+import {getRandomInteger, createIdGenerator, getRandomArrayElement} from './util.js';
 
 const ID_COUNT = 25;
 const AVATAR_COUNT = 6;
@@ -21,15 +21,6 @@ const DESCRIPTIONS = [
   'Счастливы вместе',
   'Там тебя не достанут',
 ];
-
-const createIdGenerator = () => {
-  let lastGeneratedId = 0;
-
-  return () => {
-    lastGeneratedId += 1;
-    return lastGeneratedId;
-  };
-};
 
 const generateCommentId = createIdGenerator();
 
