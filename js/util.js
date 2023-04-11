@@ -5,6 +5,15 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
+const createIdGenerator = () => {
+  let lastGeneratedId = 0;
+
+  return () => {
+    lastGeneratedId += 1;
+    return lastGeneratedId;
+  };
+};
+
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export {getRandomInteger, getRandomArrayElement};
+export {getRandomInteger, createIdGenerator, getRandomArrayElement};
