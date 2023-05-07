@@ -54,4 +54,4 @@ const getPhotos = () =>
 
 getPhotos();
 
-export default getPhotos;
+export {getPhotos};
