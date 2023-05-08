@@ -1,4 +1,4 @@
-import {getRandomInteger, createIdGenerator, getRandomArrayElement} from './mocks.js';
+import {getRandomInteger, createIdGenerator, getRandomArrayElement} from './util.js';
 
 const ID_COUNT = 25;
 const AVATAR_COUNT = 6;
