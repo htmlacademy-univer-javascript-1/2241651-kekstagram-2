@@ -18,31 +18,36 @@ const showUploadModal = (modal) => {
   const modalInner = modalElement.querySelector('div');
   const modalButton = modalElement.querySelector('button');
 
+  const onButtonClick = () => {
+    closeModal();
+  };
+
+
   const onModalEscKeydown = (evt) => {
     if (isEscapeKey(evt)) {
       evt.preventDefault();
-      onCloseModal();
+      closeModal();
     }
   };
 
   const onModalOutsideClick = (evt) => {
-    if (!evt.composedPath().include(modalInner)) {
-      onCloseModal();
+    if (!evt.composedPath().includes(modalInner)) {
+      closeModal();
     }
   };
 
-  function onCloseModal() {
-    modalButton.removeEventListener('click', onCloseModal);
+  modalButton.addEventListener('click', onButtonClick);
+  document.addEventListener('keydown', onModalEscKeydown);
+  document.addEventListener('click', onModalOutsideClick);
+
+  document.body.append(modalElement);
+
+  function closeModal() {
+    modalButton.removeEventListener('click', onButtonClick);
     document.removeEventListener('keydown', onModalEscKeydown);
     document.removeEventListener('click', onModalOutsideClick);
     modalElement.remove();
   }
-
-
-  modalButton.addEventListener('click', onCloseModal);
-  document.addEventListener('keydown', onModalEscKeydown);
-  document.addEventListener('click', onModalOutsideClick);
-  document.body.append(modalElement);
 };
 
 export { showUploadModal };
