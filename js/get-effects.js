@@ -71,4 +71,4 @@ const getEffect = (evt) => {
   }
 };
 
-export {getEffect};
+export { getEffect };

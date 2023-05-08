@@ -1,4 +1,4 @@
-import {showBigPhoto} from './big-photo.js';
+import { showBigPhoto } from './big-photo.js';
 
 const thumbnailTemplate = document
   .querySelector('#picture')
@@ -30,4 +30,4 @@ const renderThumbnails = (pictures) => {
   container.append(fragment);
 };
 
-export {renderThumbnails};
+export { renderThumbnails };

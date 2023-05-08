@@ -69,7 +69,6 @@ const resetEffect = () => {
     sliderElement.noUiSlider.destroy();
   }
 
-  setScale(100);
   imagePreview.style.filter = null;
   sliderContainer.classList.add('hidden');
 };
@@ -95,12 +94,9 @@ const onScaleBiggerClick = () => {
 
 // Применение эффектов к изображению
 const setEffect = (evt) => {
-  // Сброс эффекта
   resetEffect();
-  // Выбор актвиного эффекта
   activeEffect = getEffect(evt);
 
-  // Возвращает оригинал
   if (activeEffect === '') {
     return;
   }
@@ -121,8 +117,6 @@ const onCloseEditModalClick = () => {
 const onEditModalEscKeydown = (evt) => {
   const focused = document.activeElement;
 
-  // Если фокус находится в поле ввода хэш-тега или комментария,
-  // нажатие на Esc не должно приводить к закрытию формы редактирования изображения
   if (focused !== hashtagsInput && focused !== commentInput && isEscapeKey(evt)) {
     evt.preventDefault();
     closeEditModal();
@@ -133,7 +127,7 @@ const onEditModalEscKeydown = (evt) => {
 const onFileUploadChange = () => {
   editModal.classList.remove('hidden');
   sliderContainer.classList.add('hidden');
-  scaleValue.value = Scale.MAX;
+  scaleValue.value = `${ Scale.MAX }%`;
 
   document.addEventListener('keydown', onEditModalEscKeydown);
   editModalClose.addEventListener('click', onCloseEditModalClick);
@@ -147,7 +141,7 @@ function closeEditModal() {
   editModal.classList.add('hidden');
   body.classList.remove('modal-open');
   uploadForm.reset();
-  // resetEffect();
+  setScale(100);
 
   document.removeEventListener('keydown', onEditModalEscKeydown);
   editModalClose.removeEventListener('click', onCloseEditModalClick);
