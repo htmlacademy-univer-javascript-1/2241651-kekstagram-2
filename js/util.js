@@ -21,6 +21,9 @@ const getRandomInteger = (a, b) => {
  */
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
+// Проверка строки на максимальную длину
+const checkStringLength = (string, maxLenght) => string.length <= maxLenght;
+
 const createIdGenerator = () => {
   let lastGeneratedId = 0;
 
@@ -81,5 +84,5 @@ const throttle = (callback, delayBetweenFrames) => {
   };
 };
 
-export {getRandomInteger, createIdGenerator, getRandomArrayElement, isEscapeKey, checkActionCode, showAlertMessage, debounce, throttle};
+export { getRandomInteger, createIdGenerator, getRandomArrayElement,checkStringLength, isEscapeKey, checkActionCode, showAlertMessage, debounce, throttle };
 
