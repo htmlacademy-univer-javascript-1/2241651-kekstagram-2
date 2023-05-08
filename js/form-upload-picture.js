@@ -12,6 +12,7 @@ const uploadForm = document.querySelector('#upload-select-image');
 const fileUpload = document.querySelector('#upload-file');
 const editModal = document.querySelector('.img-upload__overlay');
 const editModalClose = document.querySelector('#upload-cancel');
+
 const hashtagsInput = document.querySelector('.text__hashtags');
 const commentInput = document.querySelector('.text__description');
 
@@ -95,7 +96,6 @@ const onScaleBiggerClick = () => {
 const setEffect = (evt) => {
   // Сброс эффекта
   resetEffect();
-
   // Выбор актвиного эффекта
   activeEffect = getEffect(evt);
 
@@ -127,7 +127,9 @@ const closeEditModal = () => {
 };
 
 const onCloseEditModalClick = () => {
-  closeEditModal();
+  editModalClose.removeEventListener('click', () => {
+    closeEditModal();
+  });
 };
 
 const onEditModalEscKeydown = (evt) => {
@@ -156,3 +158,5 @@ const onFileUploadChange = () => {
 };
 
 fileUpload.addEventListener('change', onFileUploadChange);
+
+export { closeEditModal };

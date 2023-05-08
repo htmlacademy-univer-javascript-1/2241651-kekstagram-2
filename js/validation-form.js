@@ -1,3 +1,7 @@
+import { closeEditModal } from './form-upload-picture.js';
+import { showUploadModal } from './show-upload-modal.js';
+import { sendData } from './api.js';
+
 const Hashtag = {
   PATTERN: /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/,
   MAX_COUNT: 5,
@@ -9,6 +13,7 @@ const MAX_COMMENT_LENGHT = 140;
 const uploadForm = document.querySelector('#upload-select-image');
 const hashtagsInput = document.querySelector('.text__hashtags');
 const commentInput = document.querySelector('.text__description');
+const submitButton = document.querySelector('.img-upload__submit');
 
 // Инициализация Pristine.js
 const pristine = new Pristine(uploadForm, {
@@ -68,8 +73,39 @@ pristine.addValidator(
   'Хэштеги не должны повторяться'
 );
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Публикуем...';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
+
 // Обработчик на отправку формы
 uploadForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  const isValid = pristine.validate();
+
+  if (!isValid) {
+    return;
+  }
+
+  const formData = new FormData(evt.target);
+  blockSubmitButton();
+
+  const onSuccess = () => {
+    closeEditModal();
+    unblockSubmitButton();
+    showUploadModal('success');
+  };
+
+  const onError = () => {
+    closeEditModal();
+    unblockSubmitButton();
+    showUploadModal('error');
+  };
+
+  sendData(formData, onSuccess, onError);
 });
